@@ -1,0 +1,54 @@
+body{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Header */
+.headerNav li{
+  display: inline-block;
+}
+.headerNav{
+  float: right;
+}
+header h1{
+  width: 50%;
+  margin: 0;
+  float: left;
+}
+header{
+  clear: both;
+  overflow: auto;
+}
+/* Results aside*/
+.results{
+  float: left;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 20%;
+
+}
+.results ul{
+  list-style: none;
+}
+/* survey content*/
+.surveyMain{
+  float: right;
+  box-sizing: border-box;
+  width: 80%;
+}
+.surveyItemContainer{
+  float: left;
+  width: 33.3333333%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.surveyImageBox img{
+  width: 100%
+}
+/* footer */
+footer{
+  width: 100%;
+  clear:both;
+  text-align: center;
+}
