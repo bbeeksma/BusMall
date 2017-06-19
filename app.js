@@ -33,5 +33,9 @@ SurveyItem.prototype.buildSurveyItem = function(conatainerId){
 };
 
 var boots = new SurveyItem('Jabba','$19.50','Ubb maul mace gev jerjerrod dressellian. Falleen arkanis iridonian desann skywalker greedo priapulin hapes.','images/boots.jpg');
+var boots = new SurveyItem('Jabba','$19.50','Ubb maul mace gev jerjerrod dressellian. Falleen arkanis iridonian desann skywalker greedo priapulin hapes.','images/boots.jpg');
+var boots = new SurveyItem('Jabba','$19.50','Ubb maul mace gev jerjerrod dressellian. Falleen arkanis iridonian desann skywalker greedo priapulin hapes.','images/boots.jpg');
 
+boots.buildSurveyItem('surveyFirstItem');
+boots.buildSurveyItem('surveySecondItem');
 boots.buildSurveyItem('surveyThirdItem');
