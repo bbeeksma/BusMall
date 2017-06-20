@@ -36,6 +36,8 @@ var boots = new SurveyItem('Jabba','$19.50','Ubb maul mace gev jerjerrod dressel
 var aViolet = new SurveyItem('Jabba','$19.50','Ubb maul mace gev jerjerrod dressellian. Falleen arkanis iridonian desann skywalker greedo priapulin hapes.','images/african-violet-.png');
 var violeta = new SurveyItem('Jabba','$19.50','Ubb maul mace gev jerjerrod dressellian. Falleen arkanis iridonian desann skywalker greedo priapulin hapes.','images/violeta.png');
 
+/*
 boots.buildSurveyItem('surveyFirstItem');
 aViolet.buildSurveyItem('surveySecondItem');
 violeta.buildSurveyItem('surveyThirdItem');
+*/

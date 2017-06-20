@@ -28,6 +28,7 @@ header h1{
 header{
   clear: both;
   overflow: auto;
+  background-color: white;
 }
 /* Results aside*/
 .results{
@@ -35,6 +36,7 @@ header{
   padding: 20px;
   box-sizing: border-box;
   width: 20%;
+  background-color: white;
 
 }
 .results ul{
@@ -45,6 +47,7 @@ header{
   float: right;
   box-sizing: border-box;
   width: 80%;
+  background-color: white;
 }
 .surveyItemContainer{
   float: left;
@@ -60,4 +63,5 @@ footer{
   width: 100%;
   clear:both;
   text-align: center;
+  background-color: white;
 }
