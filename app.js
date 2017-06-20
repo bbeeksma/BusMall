@@ -106,7 +106,7 @@ function getRandomItems(){
       indexesjToRemove.push(i);
     }
   }
-  for(var j = 0; j < indexesjToRemove.length; i++){
+  for(var j = 0; j < indexesToRemove.length; i++){
     itemsObjectsWorking.splice(j,1);
   }
   getFirstRandom();
