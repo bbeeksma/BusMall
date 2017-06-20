@@ -96,19 +96,20 @@ function displayRandomItems(){
 }
 
 function surveyItemContainerClick(e){
+  itemObjects.map(function(item) {
+    if(item.itemName === e.target.getAttribute('name')){
+      item.numberOfClicks++;
+    }
+  });
   if(itemsChosen < 25){
     itemsChosen++;
     displayRandomItems();
-    itemObjects.map(function(item) {
-      if(item.itemName === e.target.getAttribute('name')){
-        item.numberOfClicks++;
-      }
-    });
     console.log(itemObjects);
   }
   else{
     var itemContainer = document.getElementsByClassName('surveyThreeItemsContainer')[0];
     itemContainer.setAttribute('style','display:none');
+    buildAPrettyChart();
   }
 }
 
@@ -118,55 +119,57 @@ function surveyStartButtonClick(){
   displayRandomItems();
 }
 
-var chartClicks = itemObjects.map(function(item) {
-  return item.numberOfClicks;
-});
-var chartTimesShown = itemObjects.map(function(item) {
-  return item.numberOfTimesShown;
-});
-var chartNames = itemObjects.map(function(item) {
-  return item.itemName;
-});
-var chartClicksColor = itemObjects.map(function(item) {
-  return '#ad65c8';
-});
-var chartShownColor = itemObjects.map(function(item) {
-  return '#fbd7fb';
-});
+function buildAPrettyChart(){
+  var chartClicks = itemObjects.map(function(item) {
+    return item.numberOfClicks;
+  });
+  var chartTimesShown = itemObjects.map(function(item) {
+    return item.numberOfTimesShown;
+  });
+  var chartNames = itemObjects.map(function(item) {
+    return item.itemName;
+  });
+  var chartClicksColor = itemObjects.map(function(item) {
+    return '#ad65c8';
+  });
+  var chartShownColor = itemObjects.map(function(item) {
+    return '#fbd7fb';
+  });
 
-var chartLoc = document.getElementById('clickResults');
-var resultsChart = new Chart(chartLoc, {
-  type: 'horizontalBar',
-  data: {
-    labels: chartNames,
-    datasets: [{
-      label: '# of Clicks',
-      data: chartClicks,
-      backgroundColor: chartClicksColor,
-    },
-    {
-      label: '# of Times Shown',
-      data: chartTimesShown,
-      backgroundColor: chartShownColor,
-    }],
-  },
-  options: {
-    title:{
-      display: true,
-      text: 'Results'
-    },
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      xAxes: [{
-        stacked: true,
+  var chartLoc = document.getElementById('clickResults');
+  var resultsChart = new Chart(chartLoc, {
+    type: 'horizontalBar',
+    data: {
+      labels: chartNames,
+      datasets: [{
+        label: '# of Clicks',
+        data: chartClicks,
+        backgroundColor: chartClicksColor,
+      },
+      {
+        label: '# of Times Shown',
+        data: chartTimesShown,
+        backgroundColor: chartShownColor,
       }],
-      yAxes: [{
-        stacked: true,
-      }]
+    },
+    options: {
+      title:{
+        display: true,
+        text: 'Results'
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        xAxes: [{
+          stacked: true,
+        }],
+        yAxes: [{
+          stacked: true,
+        }]
+      }
     }
-  }
-});
+  });
+}
 
 document.getElementById('surveyButton').addEventListener('click',surveyStartButtonClick);
 document.getElementsByClassName('surveyItemContainer')[0].addEventListener('click', function(event){
