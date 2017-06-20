@@ -45,15 +45,21 @@ var water_can2 = new SurveyItem('Boba2','$10.00','Quence mirta kalee qui-gon hal
 var itemObjects = [boots,chair,scissors,water_can,wine_glass];
 
 function getFirstRandom(){
-
+  var index = Math.floor(Math.random() * (itemsObjectsWorking.length + 1));
+  itemsObjectsWorking[index].buildSurveyItem('surveyFirstItem');
+  itemsObjectsWorking.splice(index,1);
 }
 
 function getSecondRandom(){
-
+  var index = Math.floor(Math.random() * (itemsObjectsWorking.length + 1));
+  itemsObjectsWorking[index].buildSurveyItem('surveySecondItem');
+  itemsObjectsWorking.splice(index,1);
 }
 
 function getThirdRandom(){
-
+  var index = Math.floor(Math.random() * (itemsObjectsWorking.length + 1));
+  itemsObjectsWorking[index].buildSurveyItem('surveyThirdItem');
+  itemsObjectsWorking.splice(index,1);
 }
 
 function getRandomItems(){
@@ -67,4 +73,7 @@ function getRandomItems(){
   for(var j = 0; j < indexes.length; i++){
     itemsObjectsWorking.splice(j,1);
   }
+  getFirstRandom();
+  getSecondRandom();
+  getThirdRandom();
 }
