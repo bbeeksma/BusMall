@@ -10,7 +10,7 @@ function SurveyItem(name,price,description,imageFile) {
   this.usedInLastItemSet = false;
   this.pairedWith = [];
 
-  this.buildRandomChartValues();
+  //this.buildRandomChartValues();
 }
 
 SurveyItem.prototype.buildSurveyItem = function(conatainerId){
@@ -106,6 +106,10 @@ function surveyItemContainerClick(e){
     });
     console.log(itemObjects);
   }
+  else{
+    var itemContainer = document.getElementsByClassName('surveyThreeItemsContainer')[0];
+    itemContainer.setAttribute('style','display:none');
+  }
 }
 
 function surveyStartButtonClick(){
@@ -131,7 +135,6 @@ var chartShownColor = itemObjects.map(function(item) {
 });
 
 var chartLoc = document.getElementById('clickResults');
-
 var resultsChart = new Chart(chartLoc, {
   type: 'horizontalBar',
   data: {
