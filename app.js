@@ -10,7 +10,7 @@ function SurveyItem(name,price,description,imageFile) {
   this.lastLoopUsed = false;
   this.pairedWith = [];
 
-  buildRandomChartValues();
+  this.buildRandomChartValues();
 }
 
 SurveyItem.prototype.buildSurveyItem = function(conatainerId){
@@ -34,8 +34,8 @@ SurveyItem.prototype.buildSurveyItem = function(conatainerId){
 };
 
 SurveyItem.prototype.buildRandomChartValues = function() {
-  this.numberOfClicks = Math.floor(Math.random() * 25);
-  this.numberOfTimesShown = Math.floor(Math.random() * 25);
+  this.numberOfClicks = Math.floor(Math.random() * 10);
+  this.numberOfTimesShown = Math.floor(Math.random() * 15 + 10);
 };
 
 var boots = new SurveyItem('Jabba','$19.50','Ubb maul mace gev jerjerrod dressellian. Falleen arkanis iridonian desann skywalker greedo priapulin hapes.','images/boots.jpg');
@@ -50,6 +50,17 @@ var water_can2 = new SurveyItem('Boba2','$10.00','Quence mirta kalee qui-gon hal
 
 var itemObjects = [boots,chair,scissors,water_can,wine_glass,boots2,chair2,scissors2,water_can2];
 var itemsObjectsWorking;
+
+console.log(itemObjects);
+
+var chartClicks = itemObjects.map(function(item) {
+  return item.numberOfClicks;
+});
+var chartTimesShown = itemObjects.map(function(item) {
+  return item.numberOfTimesShown;
+});
+console.log(chartClicks);
+console.log(chartTimesShown);
 
 function getFirstRandom(){
   var index = Math.floor(Math.random() * (itemsObjectsWorking.length));
