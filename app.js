@@ -10,6 +10,7 @@ function SurveyItem(name,price,description,imageFile) {
   this.lastLoopUsed = false;
   this.pairedWith = [];
 
+  buildRandomChartValues();
 }
 
 SurveyItem.prototype.buildSurveyItem = function(conatainerId){
@@ -30,6 +31,11 @@ SurveyItem.prototype.buildSurveyItem = function(conatainerId){
   newSurveyImageBox.appendChild(newImage);
   newSurveyItemDesc.appendChild(newItemName);
   newSurveyItemDesc.appendChild(newItemDesc);
+};
+
+SurveyItem.prototype.buildRandomChartValues = function() {
+  this.numberOfClicks = Math.floor(Math.random() * 25);
+  this.numberOfTimesShown = Math.floor(Math.random() * 25);
 };
 
 var boots = new SurveyItem('Jabba','$19.50','Ubb maul mace gev jerjerrod dressellian. Falleen arkanis iridonian desann skywalker greedo priapulin hapes.','images/boots.jpg');
@@ -54,7 +60,7 @@ function getFirstRandom(){
     oldItemDesc.remove();
   }
   itemsObjectsWorking[index].buildSurveyItem('surveyFirstItem');
-  itemsObjectsWorking.splice(index,1);
+  //itemsObjectsWorking.splice(index,1);
 }
 
 function getSecondRandom(){
@@ -66,7 +72,7 @@ function getSecondRandom(){
     oldItemDesc.remove();
   }
   itemsObjectsWorking[index].buildSurveyItem('surveySecondItem');
-  itemsObjectsWorking.splice(index,1);
+  //itemsObjectsWorking.splice(index,1);
 }
 
 function getThirdRandom(){
@@ -78,12 +84,12 @@ function getThirdRandom(){
     oldItemDesc.remove();
   }
   itemsObjectsWorking[index].buildSurveyItem('surveyThirdItem');
-  itemsObjectsWorking.splice(index,1);
+  //itemsObjectsWorking.splice(index,1);
 }
 
 function getRandomItems(){
   itemsObjectsWorking = itemObjects;
-  var indexesjToRemove = [];
+  var indexesToRemove = [];
   for(var i = 0; i < itemObjects.length; i++){
     if(itemObjects[i].lastLoopUsed){
       indexesjToRemove.push(i);
