@@ -7,7 +7,7 @@ function SurveyItem(name,price,description,imageFile) {
   this.itemImageFile = imageFile;
   this.numberOfClicks = 0;
   this.numberOfTimesShown = 0;
-  this.lastLoopUsed = false;
+  this.usedInLastItemSet = false;
   this.pairedWith = [];
 
   this.buildRandomChartValues();
@@ -60,20 +60,34 @@ function displaySingleRandom(elementIndex,locationID){
     oldItemDesc.remove();
   }
   itemsObjectsWorking[index].buildSurveyItem(locationID); //build new element
-  itemsObjectsWorking.splice(index,1);
+  itemObjects.map(function(item){  //set usedInLastItemSet to true so it doesn't get pulled for next set.
+    if(itemsObjectsWorking[index]){
+      if(item.itemName === itemsObjectsWorking[index].itemName){
+        item.usedInLastItemSet = true;
+        itemsObjectsWorking.splice(index,1);
+      }
+    }
+  });
 }
 
-function displayRandomItems(){
+function preventDuplicateDisplay(){
   itemsObjectsWorking = itemObjects.slice();
   var indexesToRemove = [];
-  for(var i = 0; i < itemObjects.length; i++){
-    if(itemObjects[i].lastLoopUsed){
+  for(var i = 0; i < itemsObjectsWorking.length; i++){
+    if(itemsObjectsWorking[i].usedInLastItemSet){
       indexesToRemove.push(i);
     }
   }
-  for(var j = 0; j < indexesToRemove.length; j++){
-    itemsObjectsWorking.splice(j,1);
+  for(var j = (indexesToRemove.length - 1); j > -1; j--){
+    itemsObjectsWorking.splice(indexesToRemove[j],1);
   }
+  itemObjects.map(function(item) { //set all the SurveyItem.lastLoopUsed back to false to be ready for next set
+    item.usedInLastItemSet = false;
+  });
+}
+
+function displayRandomItems(){
+  preventDuplicateDisplay();
   displaySingleRandom(0,'surveyFirstItem');
   displaySingleRandom(1, 'surveySecondItem');
   displaySingleRandom(2, 'surveyThirdItem');
