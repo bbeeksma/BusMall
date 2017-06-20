@@ -51,17 +51,6 @@ var water_can2 = new SurveyItem('Boba2','$10.00','Quence mirta kalee qui-gon hal
 var itemObjects = [boots,chair,scissors,water_can,wine_glass,boots2,chair2,scissors2,water_can2];
 var itemsObjectsWorking;
 
-console.log(itemObjects);
-
-var chartClicks = itemObjects.map(function(item) {
-  return item.numberOfClicks;
-});
-var chartTimesShown = itemObjects.map(function(item) {
-  return item.numberOfTimesShown;
-});
-console.log(chartClicks);
-console.log(chartTimesShown);
-
 function getFirstRandom(){
   var index = Math.floor(Math.random() * (itemsObjectsWorking.length));
   if(document.getElementsByClassName('surveyImageBox')[0] && document.getElementsByClassName('surveyItemDesc')[0]){
@@ -120,8 +109,62 @@ function surveyButtonClick(){
   getRandomItems();
 }
 
-document.getElementById('surveyButton').addEventListener('click',surveyButtonClick);
+var chartClicks = itemObjects.map(function(item) {
+  return item.numberOfClicks;
+});
+var chartTimesShown = itemObjects.map(function(item) {
+  return item.numberOfTimesShown;
+});
+var chartNames = itemObjects.map(function(item) {
+  return item.itemName;
+});
 
+var chartLoc = document.getElementById('clickResults');
+
+var resultsChart = new Chart(chartLoc, {
+  type: 'bar',
+  data: {
+    labels: chartNames,
+    datasets: [{
+      label: '# of Clicks',
+      data: chartClicks,
+      backgroundColor: [
+        '#ad65c8',
+        '#ad65c8',
+        '#ad65c8',
+        '#ad65c8',
+        '#ad65c8',
+        '#ad65c8',
+        '#ad65c8',
+        '#ad65c8',
+        '#ad65c8',
+      ],
+      borderColor: [
+        '#fbd7fb',
+        '#fbd7fb',
+        '#fbd7fb',
+        '#fbd7fb',
+        '#fbd7fb',
+        '#fbd7fb',
+        '#fbd7fb',
+        '#fbd7fb',
+        '#fbd7fb',
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      xAxes: [{
+        ticks: {
+          beginAtZero:true
+        }
+      }]
+    }
+  }
+});
+
+document.getElementById('surveyButton').addEventListener('click',surveyButtonClick);
 document.getElementsByClassName('surveyItemContainer')[0].addEventListener('click', getRandomItems);
 document.getElementsByClassName('surveyItemContainer')[1].addEventListener('click', getRandomItems);
 document.getElementsByClassName('surveyItemContainer')[2].addEventListener('click', getRandomItems);
