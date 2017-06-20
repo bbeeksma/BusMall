@@ -118,10 +118,10 @@ var chartTimesShown = itemObjects.map(function(item) {
 var chartNames = itemObjects.map(function(item) {
   return item.itemName;
 });
-var chartBackgroundColor = itemObjects.map(function(item) {
+var chartClicksColor = itemObjects.map(function(item) {
   return '#ad65c8';
 });
-var chartBorderColor = itemObjects.map(function(item) {
+var chartShownColor = itemObjects.map(function(item) {
   return '#fbd7fb';
 });
 
@@ -134,14 +134,29 @@ var resultsChart = new Chart(chartLoc, {
     datasets: [{
       label: '# of Clicks',
       data: chartClicks,
-      backgroundColor: chartBackgroundColor,
-      borderColor: chartBorderColor,
-      borderWidth: 1
-    }]
+      backgroundColor: chartClicksColor,
+    },
+    {
+      label: '# of Times Shown',
+      data: chartTimesShown,
+      backgroundColor: chartShownColor,
+    }],
   },
   options: {
+    title:{
+      display: true,
+      text: 'Results'
+    },
     responsive: true,
     maintainAspectRatio: false,
+    scales: {
+      xAxes: [{
+        stacked: true,
+      }],
+      yAxes: [{
+        stacked: true,
+      }]
+    }
   }
 });
 
