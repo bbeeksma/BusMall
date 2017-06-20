@@ -60,7 +60,7 @@ function getFirstRandom(){
     oldItemDesc.remove();
   }
   itemsObjectsWorking[index].buildSurveyItem('surveyFirstItem');
-  //itemsObjectsWorking.splice(index,1);
+  itemsObjectsWorking.splice(index,1);
 }
 
 function getSecondRandom(){
@@ -72,7 +72,7 @@ function getSecondRandom(){
     oldItemDesc.remove();
   }
   itemsObjectsWorking[index].buildSurveyItem('surveySecondItem');
-  //itemsObjectsWorking.splice(index,1);
+  itemsObjectsWorking.splice(index,1);
 }
 
 function getThirdRandom(){
@@ -84,15 +84,15 @@ function getThirdRandom(){
     oldItemDesc.remove();
   }
   itemsObjectsWorking[index].buildSurveyItem('surveyThirdItem');
-  //itemsObjectsWorking.splice(index,1);
+  itemsObjectsWorking.splice(index,1);
 }
 
 function getRandomItems(){
-  itemsObjectsWorking = itemObjects;
+  itemsObjectsWorking = itemObjects.slice();
   var indexesToRemove = [];
   for(var i = 0; i < itemObjects.length; i++){
     if(itemObjects[i].lastLoopUsed){
-      indexesjToRemove.push(i);
+      indexesToRemove.push(i);
     }
   }
   for(var j = 0; j < indexesToRemove.length; j++){
