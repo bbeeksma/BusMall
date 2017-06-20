@@ -10,6 +10,7 @@ function SurveyItem(name,price,description,imageFile) {
   this.lastLoopUsed = false;
   this.pairedWith = [];
 
+  this.buildRandomChartValues();
 }
 
 SurveyItem.prototype.buildSurveyItem = function(conatainerId){
@@ -30,6 +31,11 @@ SurveyItem.prototype.buildSurveyItem = function(conatainerId){
   newSurveyImageBox.appendChild(newImage);
   newSurveyItemDesc.appendChild(newItemName);
   newSurveyItemDesc.appendChild(newItemDesc);
+};
+
+SurveyItem.prototype.buildRandomChartValues = function() {
+  this.numberOfClicks = Math.floor(Math.random() * 10);
+  this.numberOfTimesShown = Math.floor(Math.random() * 15 + 10);
 };
 
 var boots = new SurveyItem('Jabba','$19.50','Ubb maul mace gev jerjerrod dressellian. Falleen arkanis iridonian desann skywalker greedo priapulin hapes.','images/boots.jpg');
@@ -54,7 +60,7 @@ function getFirstRandom(){
     oldItemDesc.remove();
   }
   itemsObjectsWorking[index].buildSurveyItem('surveyFirstItem');
-  itemsObjectsWorking.splice(index,1);
+  //itemsObjectsWorking.splice(index,1);
 }
 
 function getSecondRandom(){
@@ -66,7 +72,7 @@ function getSecondRandom(){
     oldItemDesc.remove();
   }
   itemsObjectsWorking[index].buildSurveyItem('surveySecondItem');
-  itemsObjectsWorking.splice(index,1);
+  //itemsObjectsWorking.splice(index,1);
 }
 
 function getThirdRandom(){
@@ -78,18 +84,18 @@ function getThirdRandom(){
     oldItemDesc.remove();
   }
   itemsObjectsWorking[index].buildSurveyItem('surveyThirdItem');
-  itemsObjectsWorking.splice(index,1);
+  //itemsObjectsWorking.splice(index,1);
 }
 
 function getRandomItems(){
   itemsObjectsWorking = itemObjects;
-  var indexesjToRemove = [];
+  var indexesToRemove = [];
   for(var i = 0; i < itemObjects.length; i++){
     if(itemObjects[i].lastLoopUsed){
       indexesjToRemove.push(i);
     }
   }
-  for(var j = 0; j < indexesjToRemove.length; i++){
+  for(var j = 0; j < indexesToRemove.length; i++){
     itemsObjectsWorking.splice(j,1);
   }
   getFirstRandom();
@@ -103,8 +109,58 @@ function surveyButtonClick(){
   getRandomItems();
 }
 
-document.getElementById('surveyButton').addEventListener('click',surveyButtonClick);
+var chartClicks = itemObjects.map(function(item) {
+  return item.numberOfClicks;
+});
+var chartTimesShown = itemObjects.map(function(item) {
+  return item.numberOfTimesShown;
+});
+var chartNames = itemObjects.map(function(item) {
+  return item.itemName;
+});
+var chartClicksColor = itemObjects.map(function(item) {
+  return '#ad65c8';
+});
+var chartShownColor = itemObjects.map(function(item) {
+  return '#fbd7fb';
+});
 
+var chartLoc = document.getElementById('clickResults');
+
+var resultsChart = new Chart(chartLoc, {
+  type: 'horizontalBar',
+  data: {
+    labels: chartNames,
+    datasets: [{
+      label: '# of Clicks',
+      data: chartClicks,
+      backgroundColor: chartClicksColor,
+    },
+    {
+      label: '# of Times Shown',
+      data: chartTimesShown,
+      backgroundColor: chartShownColor,
+    }],
+  },
+  options: {
+    title:{
+      display: true,
+      text: 'Results'
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      xAxes: [{
+        stacked: true,
+      }],
+      yAxes: [{
+        stacked: true,
+      }]
+    }
+  }
+});
+
+document.getElementById('surveyButton').addEventListener('click',surveyButtonClick);
 document.getElementsByClassName('surveyItemContainer')[0].addEventListener('click', getRandomItems);
 document.getElementsByClassName('surveyItemContainer')[1].addEventListener('click', getRandomItems);
 document.getElementsByClassName('surveyItemContainer')[2].addEventListener('click', getRandomItems);

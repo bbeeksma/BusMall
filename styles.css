@@ -7,10 +7,13 @@ Dark Lilac #ad65c8
 */
 
 body{
+  background-color: #fbd7fb;
+}
+.widthContainer{
+  min-width: 800px;
   width: 85%;
   margin-left: auto;
   margin-right: auto;
-  background-color: #fbd7fb;
 }
 
 /* Header */
@@ -40,20 +43,24 @@ header{
   float: left;
   padding: 20px;
   box-sizing: border-box;
-  width: 19%;
+  width: 26%;
   background-color: #98fb98;
-  margin: 1% 1% 1% 0;
+  margin: 1% 1% 2% 0;
   box-sizing: border-box;
   box-shadow: 10px 10px 5px 0px rgba(173,101,200,1);
 }
 .results ul{
   list-style: none;
 }
+.canvasBag{
+  width: 100%;
+  min-height: 350px;
+}
 /* survey content*/
 .surveyMain{
   float: right;
   box-sizing: border-box;
-  width: 79%;
+  width: 72%;
   background-color: white;
   margin: 1% 0 2% 1%;
   padding: 20px;
