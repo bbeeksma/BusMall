@@ -24,6 +24,7 @@ SurveyItem.prototype.buildSurveyItem = function(conatainerId){
   newSurveyItemDesc.setAttribute('class','surveyItemDesc');
   newImage.setAttribute('src',this.itemImageFile);
   newImage.setAttribute('alt',this.itemName);
+  newImage.setAttribute('name',this.itemName);
   newItemName.innerText = this.itemName;
   newItemDesc.innerText = this.itemDesc;
   container.appendChild(newSurveyImageBox);
@@ -94,14 +95,20 @@ function displayRandomItems(){
   displaySingleRandom(2, 'surveyThirdItem');
 }
 
-function surveyItemContainerClick(){
+function surveyItemContainerClick(e){
   if(itemsChosen < 25){
     itemsChosen++;
     displayRandomItems();
+    itemObjects.map(function(item) {
+      if(item.itemName === e.target.getAttribute('name')){
+        item.numberOfClicks++;
+      }
+    });
+    console.log(itemObjects);
   }
 }
 
-function surveyButtonClick(){
+function surveyStartButtonClick(){
   var surveyButtonLocation = document.getElementById('startSurvey');
   surveyButtonLocation.setAttribute('style', 'display:none');
   displayRandomItems();
@@ -158,7 +165,13 @@ var resultsChart = new Chart(chartLoc, {
   }
 });
 
-document.getElementById('surveyButton').addEventListener('click',surveyButtonClick);
-document.getElementsByClassName('surveyItemContainer')[0].addEventListener('click', surveyItemContainerClick);
-document.getElementsByClassName('surveyItemContainer')[1].addEventListener('click', surveyItemContainerClick);
-document.getElementsByClassName('surveyItemContainer')[2].addEventListener('click', surveyItemContainerClick);
+document.getElementById('surveyButton').addEventListener('click',surveyStartButtonClick);
+document.getElementsByClassName('surveyItemContainer')[0].addEventListener('click', function(event){
+  surveyItemContainerClick(event);
+});
+document.getElementsByClassName('surveyItemContainer')[1].addEventListener('click', function(event){
+  surveyItemContainerClick(event);
+});
+document.getElementsByClassName('surveyItemContainer')[2].addEventListener('click', function(event){
+  surveyItemContainerClick(event);
+});
