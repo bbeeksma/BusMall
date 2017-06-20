@@ -51,39 +51,15 @@ var water_can2 = new SurveyItem('Boba2','$10.00','Quence mirta kalee qui-gon hal
 var itemObjects = [boots,chair,scissors,water_can,wine_glass,boots2,chair2,scissors2,water_can2];
 var itemsObjectsWorking;
 
-function getFirstRandom(){
+function getSingleRandom(elementIndex,locationID){
   var index = Math.floor(Math.random() * (itemsObjectsWorking.length));
-  if(document.getElementsByClassName('surveyImageBox')[0] && document.getElementsByClassName('surveyItemDesc')[0]){
-    var oldImage = document.getElementsByClassName('surveyImageBox')[0];
-    var oldItemDesc = document.getElementsByClassName('surveyItemDesc')[0];
+  if(document.getElementsByClassName('surveyImageBox')[elementIndex] && document.getElementsByClassName('surveyItemDesc')[elementIndex]){ //remove old elements if the exist
+    var oldImage = document.getElementsByClassName('surveyImageBox')[elementIndex];
+    var oldItemDesc = document.getElementsByClassName('surveyItemDesc')[elementIndex];
     oldImage.remove();
     oldItemDesc.remove();
   }
-  itemsObjectsWorking[index].buildSurveyItem('surveyFirstItem');
-  itemsObjectsWorking.splice(index,1);
-}
-
-function getSecondRandom(){
-  var index = Math.floor(Math.random() * (itemsObjectsWorking.length));
-  if(document.getElementsByClassName('surveyImageBox')[1] && document.getElementsByClassName('surveyItemDesc')[1]){
-    var oldImage = document.getElementsByClassName('surveyImageBox')[1];
-    var oldItemDesc = document.getElementsByClassName('surveyItemDesc')[1];
-    oldImage.remove();
-    oldItemDesc.remove();
-  }
-  itemsObjectsWorking[index].buildSurveyItem('surveySecondItem');
-  itemsObjectsWorking.splice(index,1);
-}
-
-function getThirdRandom(){
-  var index = Math.floor(Math.random() * (itemsObjectsWorking.length));
-  if(document.getElementsByClassName('surveyImageBox')[2] && document.getElementsByClassName('surveyItemDesc')[2]){
-    var oldImage = document.getElementsByClassName('surveyImageBox')[2];
-    var oldItemDesc = document.getElementsByClassName('surveyItemDesc')[2];
-    oldImage.remove();
-    oldItemDesc.remove();
-  }
-  itemsObjectsWorking[index].buildSurveyItem('surveyThirdItem');
+  itemsObjectsWorking[index].buildSurveyItem(locationID); //build new element
   itemsObjectsWorking.splice(index,1);
 }
 
@@ -98,9 +74,9 @@ function getRandomItems(){
   for(var j = 0; j < indexesToRemove.length; j++){
     itemsObjectsWorking.splice(j,1);
   }
-  getFirstRandom();
-  getSecondRandom();
-  getThirdRandom();
+  getSingleRandom(0,'surveyFirstItem');
+  getSingleRandom(1, 'surveySecondItem');
+  getSingleRandom(2, 'surveyThirdItem');
 }
 
 function surveyButtonClick(){
