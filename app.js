@@ -31,6 +31,7 @@ SurveyItem.prototype.buildSurveyItem = function(conatainerId){
   newSurveyImageBox.appendChild(newImage);
   newSurveyItemDesc.appendChild(newItemName);
   newSurveyItemDesc.appendChild(newItemDesc);
+  this.usedInLastItemSet = true; //set this to true because you just used it
 };
 
 SurveyItem.prototype.buildRandomChartValues = function() {
@@ -60,14 +61,8 @@ function displaySingleRandom(elementIndex,locationID){
     oldItemDesc.remove();
   }
   itemsObjectsWorking[index].buildSurveyItem(locationID); //build new element
-  itemObjects.map(function(item){  //set usedInLastItemSet to true so it doesn't get pulled for next set.
-    if(itemsObjectsWorking[index]){
-      if(item.itemName === itemsObjectsWorking[index].itemName){
-        item.usedInLastItemSet = true;
-        itemsObjectsWorking.splice(index,1);
-      }
-    }
-  });
+  itemsObjectsWorking.splice(index,1);
+  console.log(itemsObjectsWorking);
 }
 
 function preventDuplicateDisplay(){
