@@ -7,7 +7,7 @@ Dark Lilac #ad65c8
 */
 
 body{
-  width: 90%;
+  width: 85%;
   margin-left: auto;
   margin-right: auto;
   background-color: #fbd7fb;
@@ -29,10 +29,11 @@ header{
   clear: both;
   overflow: auto;
   box-sizing: border-box;
-  padding: 10px;
+  padding: 20px;
   background-color: white;
   min-height: 90px;
   margin: 1% 0;
+  box-shadow: 10px 10px 5px 0px rgba(31,149,98,1);
 }
 /* Results aside*/
 .results{
@@ -43,6 +44,7 @@ header{
   background-color: #98fb98;
   margin: 1% 1% 1% 0;
   box-sizing: border-box;
+  box-shadow: 10px 10px 5px 0px rgba(173,101,200,1);
 }
 .results ul{
   list-style: none;
@@ -53,8 +55,9 @@ header{
   box-sizing: border-box;
   width: 79%;
   background-color: white;
-  margin: 1% 0 1% 1%;
-  padding: 10px;
+  margin: 1% 0 2% 1%;
+  padding: 20px;
+  box-shadow: 10px 10px 5px 0px rgba(31,149,98,1);
 }
 .surveyItemContainer{
   float: left;
@@ -74,7 +77,9 @@ footer{
   clear:both;
   text-align: center;
   background-color: white;
-  padding: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
   min-height: 90px;
   box-sizing: border-box;
+  box-shadow: 10px 10px 5px 0px rgba(31,149,98,1);
 }
