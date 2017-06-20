@@ -42,3 +42,4 @@ boots.buildSurveyItem('surveyFirstItem');
 aViolet.buildSurveyItem('surveySecondItem');
 violeta.buildSurveyItem('surveyThirdItem');
 */
+var itemObjects = [boots,chair,scissors,water_can,wine_glass];
