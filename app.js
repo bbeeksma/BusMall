@@ -95,7 +95,7 @@ function getRandomItems(){
       indexesjToRemove.push(i);
     }
   }
-  for(var j = 0; j < indexesToRemove.length; i++){
+  for(var j = 0; j < indexesToRemove.length; j++){
     itemsObjectsWorking.splice(j,1);
   }
   getFirstRandom();
