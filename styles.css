@@ -28,16 +28,21 @@ header h1{
 header{
   clear: both;
   overflow: auto;
+  box-sizing: border-box;
+  padding: 10px;
   background-color: white;
+  min-height: 90px;
+  margin: 1% 0;
 }
 /* Results aside*/
 .results{
   float: left;
   padding: 20px;
   box-sizing: border-box;
-  width: 20%;
-  background-color: white;
-
+  width: 19%;
+  background-color: #98fb98;
+  margin: 1% 1% 1% 0;
+  box-sizing: border-box;
 }
 .results ul{
   list-style: none;
@@ -46,8 +51,10 @@ header{
 .surveyMain{
   float: right;
   box-sizing: border-box;
-  width: 80%;
+  width: 79%;
   background-color: white;
+  margin: 1% 0 1% 1%;
+  padding: 10px;
 }
 .surveyItemContainer{
   float: left;
@@ -56,7 +63,10 @@ header{
   box-sizing: border-box;
 }
 .surveyImageBox img{
-  width: 100%
+  width: 100%;
+}
+.surveyToStart{
+  text-align: center;
 }
 /* footer */
 footer{
@@ -64,4 +74,7 @@ footer{
   clear:both;
   text-align: center;
   background-color: white;
+  padding: 10px;
+  min-height: 90px;
+  box-sizing: border-box;
 }
