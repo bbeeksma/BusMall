@@ -40,7 +40,7 @@ header{
   float: left;
   padding: 20px;
   box-sizing: border-box;
-  width: 19%;
+  width: 24%;
   background-color: #98fb98;
   margin: 1% 1% 1% 0;
   box-sizing: border-box;
@@ -49,11 +49,14 @@ header{
 .results ul{
   list-style: none;
 }
+#clickResults{
+  width: 100%
+}
 /* survey content*/
 .surveyMain{
   float: right;
   box-sizing: border-box;
-  width: 79%;
+  width: 74%;
   background-color: white;
   margin: 1% 0 2% 1%;
   padding: 20px;
