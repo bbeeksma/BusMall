@@ -7,8 +7,8 @@ function SurveyItem(name,price,description,imageFile) {
   this.itemImageFile = imageFile;
   this.numberOfClicks = 0;
   this.numberOfTimesShown = 0;
-  this.lastLoopUsed = 0;
-  this.pairedWith = 0;
+  this.lastLoopUsed = false;
+  this.pairedWith = [];
 
 }
 
@@ -37,9 +37,21 @@ var chair = new SurveyItem('Leah','$99.99','Neimoidia bollux momaw droid saffa s
 var scissors = new SurveyItem('Han','$7.89','Shistavanen phlog depa oppo qui-gon t88 dorvalla. Ailyn darth irek max jabba finis kiffar antonio bith.','images/schissors.jpg');
 var water_can = new SurveyItem('Boba','$10.00','Quence mirta kalee qui-gon halla seerdon bibble. Calamari jacen tund tierce hutt salacious alderaan.','images/water_can');
 var wine_glass = new SurveyItem('Vader','$23.99','Vader saffa arkanis kyle givin yavin. Utapaun selkath dat mccool zuggs medon derlin kathol secura.','images/wine_glass');
-/*
-boots.buildSurveyItem('surveyFirstItem');
-aViolet.buildSurveyItem('surveySecondItem');
-violeta.buildSurveyItem('surveyThirdItem');
-*/
+
 var itemObjects = [boots,chair,scissors,water_can,wine_glass];
+
+function getFirstRandom(){
+
+}
+
+function getSecondRandom(){
+
+}
+
+function getThirdRandom(){
+
+}
+
+function getRandomItems(){
+  var itemsObjectsWorking = itemObjects;
+}
