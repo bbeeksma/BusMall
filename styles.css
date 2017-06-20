@@ -52,8 +52,9 @@ header{
 .results ul{
   list-style: none;
 }
-#clickResults{
+.canvasBag{
   width: 100%;
+  min-height: 350px;
 }
 /* survey content*/
 .surveyMain{

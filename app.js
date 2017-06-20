@@ -122,7 +122,7 @@ var chartNames = itemObjects.map(function(item) {
 var chartLoc = document.getElementById('clickResults');
 
 var resultsChart = new Chart(chartLoc, {
-  type: 'bar',
+  type: 'horizontalBar',
   data: {
     labels: chartNames,
     datasets: [{
@@ -154,13 +154,8 @@ var resultsChart = new Chart(chartLoc, {
     }]
   },
   options: {
-    scales: {
-      xAxes: [{
-        ticks: {
-          beginAtZero:true
-        }
-      }]
-    }
+    responsive: true,
+    maintainAspectRatio: false,
   }
 });
 
