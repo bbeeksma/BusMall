@@ -42,28 +42,47 @@ var chair2 = new SurveyItem('Leah2','$99.99','Neimoidia bollux momaw droid saffa
 var scissors2 = new SurveyItem('Han2','$7.89','Shistavanen phlog depa oppo qui-gon t88 dorvalla. Ailyn darth irek max jabba finis kiffar antonio bith.','images/scissors.jpg');
 var water_can2 = new SurveyItem('Boba2','$10.00','Quence mirta kalee qui-gon halla seerdon bibble. Calamari jacen tund tierce hutt salacious alderaan.','images/water_can.jpg');
 
-var itemObjects = [boots,chair,scissors,water_can,wine_glass];
-var itemsObjectsWorking = itemObjects;
+var itemObjects = [boots,chair,scissors,water_can,wine_glass,boots2,chair2,scissors2,water_can2];
+var itemsObjectsWorking;
 
 function getFirstRandom(){
   var index = Math.floor(Math.random() * (itemsObjectsWorking.length));
+  if(document.getElementsByClassName('surveyImageBox')[0] && document.getElementsByClassName('surveyItemDesc')[0]){
+    var oldImage = document.getElementsByClassName('surveyImageBox')[0];
+    var oldItemDesc = document.getElementsByClassName('surveyItemDesc')[0];
+    oldImage.remove();
+    oldItemDesc.remove();
+  }
   itemsObjectsWorking[index].buildSurveyItem('surveyFirstItem');
   itemsObjectsWorking.splice(index,1);
 }
 
 function getSecondRandom(){
   var index = Math.floor(Math.random() * (itemsObjectsWorking.length));
+  if(document.getElementsByClassName('surveyImageBox')[1] && document.getElementsByClassName('surveyItemDesc')[1]){
+    var oldImage = document.getElementsByClassName('surveyImageBox')[1];
+    var oldItemDesc = document.getElementsByClassName('surveyItemDesc')[1];
+    oldImage.remove();
+    oldItemDesc.remove();
+  }
   itemsObjectsWorking[index].buildSurveyItem('surveySecondItem');
   itemsObjectsWorking.splice(index,1);
 }
 
 function getThirdRandom(){
   var index = Math.floor(Math.random() * (itemsObjectsWorking.length));
+  if(document.getElementsByClassName('surveyImageBox')[2] && document.getElementsByClassName('surveyItemDesc')[2]){
+    var oldImage = document.getElementsByClassName('surveyImageBox')[2];
+    var oldItemDesc = document.getElementsByClassName('surveyItemDesc')[2];
+    oldImage.remove();
+    oldItemDesc.remove();
+  }
   itemsObjectsWorking[index].buildSurveyItem('surveyThirdItem');
   itemsObjectsWorking.splice(index,1);
 }
 
 function getRandomItems(){
+  itemsObjectsWorking = itemObjects;
   var indexesjToRemove = [];
   for(var i = 0; i < itemObjects.length; i++){
     if(itemObjects[i].lastLoopUsed){
@@ -78,4 +97,14 @@ function getRandomItems(){
   getThirdRandom();
 }
 
-getRandomItems();
+function surveyButtonClick(){
+  var surveyButtonLocation = document.getElementById('startSurvey');
+  surveyButtonLocation.setAttribute('style', 'display:none');
+  getRandomItems();
+}
+
+document.getElementById('surveyButton').addEventListener('click',surveyButtonClick);
+
+document.getElementsByClassName('surveyItemContainer')[0].addEventListener('click', getRandomItems);
+document.getElementsByClassName('surveyItemContainer')[1].addEventListener('click', getRandomItems);
+document.getElementsByClassName('surveyItemContainer')[2].addEventListener('click', getRandomItems);
