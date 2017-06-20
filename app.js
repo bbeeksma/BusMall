@@ -58,4 +58,13 @@ function getThirdRandom(){
 
 function getRandomItems(){
   var itemsObjectsWorking = itemObjects;
+  var indexesjToRemove = [];
+  for(var i = 0; i < itemObjects.length; i++){
+    if(itemObjects[i].lastLoopUsed){
+      indexesjToRemove.push(i);
+    }
+  }
+  for(var j = 0; j < indexes.length; i++){
+    itemsObjectsWorking.splice(j,1);
+  }
 }
