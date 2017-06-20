@@ -5,6 +5,7 @@
 - As a member of MRT I want the data to be useful. I.E. the results should show % of times an image was selected when it was an option rather than only number of times an image was selected.
 - As a member of MRT I want the data to be varied. The images should not be shown twice in a row, and no set of 3 images should be repeated.
 - as a member of MRT I want to make sure that once the survey has been completed (25 results) the user is no longer allowed to select further images.
+- as a member of MRT I want the results to be easily read.  A bar chart would work for this.
 
 ### Focus Group User (User)
 - As a user I want the layout of the site to be visually appealing and easy to read.
