@@ -52,6 +52,7 @@ var itemObjects = [
 ];
 
 var itemsObjectsWorking;
+var itemsChosen = 0;
 
 function displaySingleRandom(elementIndex,locationID){
   var index = Math.floor(Math.random() * (itemsObjectsWorking.length));
@@ -87,6 +88,13 @@ function displayRandomItems(){
   displaySingleRandom(0,'surveyFirstItem');
   displaySingleRandom(1, 'surveySecondItem');
   displaySingleRandom(2, 'surveyThirdItem');
+}
+
+function surveyItemContainerClick(){
+  if(itemsChosen < 25){
+    itemsChosen++;
+    displayRandomItems();
+  }
 }
 
 function surveyButtonClick(){
@@ -147,6 +155,6 @@ var resultsChart = new Chart(chartLoc, {
 });
 
 document.getElementById('surveyButton').addEventListener('click',surveyButtonClick);
-document.getElementsByClassName('surveyItemContainer')[0].addEventListener('click', displayRandomItems);
-document.getElementsByClassName('surveyItemContainer')[1].addEventListener('click', displayRandomItems);
-document.getElementsByClassName('surveyItemContainer')[2].addEventListener('click', displayRandomItems);
+document.getElementsByClassName('surveyItemContainer')[0].addEventListener('click', surveyItemContainerClick);
+document.getElementsByClassName('surveyItemContainer')[1].addEventListener('click', surveyItemContainerClick);
+document.getElementsByClassName('surveyItemContainer')[2].addEventListener('click', surveyItemContainerClick);
