@@ -31,12 +31,17 @@ SurveyItem.prototype.buildSurveyItem = function(conatainerId){
   newSurveyImageBox.appendChild(newImage);
   newSurveyItemDesc.appendChild(newItemName);
   newSurveyItemDesc.appendChild(newItemDesc);
-  this.usedInLastItemSet = true; //set this to true because you just used it
+  this.setShownValues();
 };
 
 SurveyItem.prototype.buildRandomChartValues = function() {
   this.numberOfClicks = Math.floor(Math.random() * 10);
   this.numberOfTimesShown = Math.floor(Math.random() * 15 + 10);
+};
+
+SurveyItem.prototype.setShownValues = function () {
+  this.numberOfTimesShown++;
+  this.usedInLastItemSet = true;
 };
 
 var itemObjects = [
@@ -64,7 +69,6 @@ function displaySingleRandom(elementIndex,locationID){
   }
   itemsObjectsWorking[index].buildSurveyItem(locationID); //build new element
   itemsObjectsWorking.splice(index,1);
-  console.log(itemsObjectsWorking);
 }
 
 function preventDuplicateDisplay(){
