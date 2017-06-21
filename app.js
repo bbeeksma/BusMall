@@ -55,7 +55,8 @@ var itemsObjectsWorking;
 var itemsChosen = 0;
 
 function writeToStorage(){
-  //need to write itemsChosen
+  window.localStorage.itemsChosen = itemsChosen;
+  console.log(window.localStorage);
   //need to write numberOfTimesShown, usedInLastItemSet, and numberOfClicks for each object.
   //do we want to keep the objects that were on the screen? not right now.
 }
@@ -101,12 +102,13 @@ function surveyItemContainerClick(e){
       item.numberOfClicks++;
     }
   });
-  if(itemsChosen < 25){
+  if(itemsChosen < 24){
     itemsChosen++;
     displayRandomItems();
     writeToStorage();
   }
   else{
+    itemsChosen++;
     var itemContainer = document.getElementsByClassName('surveyThreeItemsContainer')[0];
     itemContainer.setAttribute('style','display:none');
     buildAPrettyChart();
