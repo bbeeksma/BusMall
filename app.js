@@ -55,8 +55,6 @@ var itemsObjectsWorking;
 var itemsChosen = window.localStorage.itemsChosen || 0;
 
 function onLoadValues(){
-  var storedObjects = JSON.parse(window.localStorage.itemObjectSavedVallues);
-  console.log(storedObjects);
   updateItemObjects();
   if(itemsChosen > 24){
     var surveyButtonLocation = document.getElementById('startSurvey');
@@ -66,31 +64,30 @@ function onLoadValues(){
 }
 
 function updateItemObjects(){
-
+  if(window.localStorage.itemObjectSavedVallues){
+    var storedObjects = JSON.parse(window.localStorage.itemObjectSavedVallues);
+    console.log(storedObjects);
+  }
 }
 
 function writeToStorage(){
   window.localStorage.itemsChosen = itemsChosen;
-  console.log(window.localStorage);
   window.localStorage.itemObjectSavedVallues = prepForStorage();
-  console.log(window.localStorage);
-  //do we want to keep the objects that were on the screen? not right now.
 }
 
 function prepForStorage(){
-  var obj = [];
+  var obj = {};
   for(var i = 0; i < itemObjects.length; i++){
-    obj.push(prepSingleForStorage(i));
+    obj[itemObjects[i].itemName] = prepData(i);
   }
   return JSON.stringify(obj);
 }
 
-function prepSingleForStorage(index){
-  var itemName = itemObjects[index].itemName;
+function prepData(index){
   var numberOfTimesShown = itemObjects[index].numberOfTimesShown;
   var usedInLastItemSet = itemObjects[index].usedInLastItemSet;
   var numberOfClicks = itemObjects[index].numberOfClicks;
-  return {itemName: itemName, numberOfTimesShown: numberOfTimesShown, usedInLastItemSet: usedInLastItemSet, numberOfClicks: numberOfClicks};
+  return {numberOfTimesShown: numberOfTimesShown, usedInLastItemSet: usedInLastItemSet, numberOfClicks: numberOfClicks};
 }
 
 function displaySingleRandom(elementIndex,locationID){
