@@ -57,10 +57,15 @@ var itemsChosen = 0;
 function writeToStorage(){
   window.localStorage.itemsChosen = itemsChosen;
   console.log(window.localStorage);
+  window.localStorage.itemObjects = prepForStorage();
+  console.log(window.localStorage);
   //need to write numberOfTimesShown, usedInLastItemSet, and numberOfClicks for each object.
   //do we want to keep the objects that were on the screen? not right now.
 }
 
+function prepForStorage(){
+  return JSON.stringify(itemObjects);
+}
 function displaySingleRandom(elementIndex,locationID){
   var index = Math.floor(Math.random() * (itemsObjectsWorking.length));
   if(document.getElementsByClassName('surveyImageBox')[elementIndex] && document.getElementsByClassName('surveyItemDesc')[elementIndex]){ //remove old elements if the exist
@@ -109,6 +114,7 @@ function surveyItemContainerClick(e){
   }
   else{
     itemsChosen++;
+    writeToStorage();
     var itemContainer = document.getElementsByClassName('surveyThreeItemsContainer')[0];
     itemContainer.setAttribute('style','display:none');
     buildAPrettyChart();
