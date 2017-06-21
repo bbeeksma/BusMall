@@ -57,23 +57,25 @@ var itemsChosen = 0;
 function writeToStorage(){
   window.localStorage.itemsChosen = itemsChosen;
   console.log(window.localStorage);
-  for(var i = 0; i < itemObjects.length; i++){
-    window.localStorage.numberOfTimesShown = prepForStorage(i, 'numberOfTimesShown');
-    window.localStorage.usedInLastItemSet = prepForStorage(i, 'usedInLastItemSet');
-    window.localStorage.numberOfClicks = prepForStorage(i ,'numberOfClicks');
-  }
+  window.localStorage.itemObjectSavedVallues = prepForStorage();
   console.log(window.localStorage);
-  //need to write numberOfTimesShown, usedInLastItemSet, and numberOfClicks for each object.
   //do we want to keep the objects that were on the screen? not right now.
 }
 
-function prepForStorage(index, key){
-  var itemName = itemObjects[index].itemName;
-  console.log('name = ' + name);
-  var value = itemObjects[index][key];
-  var obj = {name: itemName, value: value};
-  console.log('obj = ' + obj);
+function prepForStorage(){
+  var obj = [];
+  for(var i = 0; i < itemObjects.length; i++){
+    obj.push(prepSingleForStorage(i));
+  }
   return JSON.stringify(obj);
+}
+
+function prepSingleForStorage(index){
+  var itemName = itemObjects[index].itemName;
+  var numberOfTimesShown = itemObjects[index].numberOfTimesShown;
+  var usedInLastItemSet = itemObjects[index].usedInLastItemSet;
+  var numberOfClicks = itemObjects[index].numberOfClicks;
+  return {itemName: itemName, numberOfTimesShown: numberOfTimesShown, usedInLastItemSet: usedInLastItemSet, numberOfClicks: numberOfClicks};
 }
 
 function displaySingleRandom(elementIndex,locationID){
