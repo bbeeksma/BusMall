@@ -76,12 +76,21 @@ function updateItemObjects(){
       item.usedInLastItemSet = storedObjects[item.itemName].usedInLastItemSet;
       item.numberOfClicks = storedObjects[item.itemName].numberOfClicks;
     });
-    console.log(itemObjects);
   }
 }
 
 function displayPreviousObjects(){
-
+  var locations = ['surveyFirstItem','surveySecondItem','surveyThirdItem'];
+  var lastDisplayed = itemObjects.filter(function(item){
+    if(item.usedInLastItemSet === true){
+      return true;
+    }
+  });
+  console.log(lastDisplayed);
+  lastDisplayed.map(function(item,index){
+    item.buildSurveyItem(locations[index]);
+    item.numberOfTimesShown--; //decrement here because we've already shown once and don't need to count this as a second time
+  });
 }
 
 function writeToStorage(){
