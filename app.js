@@ -54,6 +54,12 @@ var itemObjects = [
 var itemsObjectsWorking;
 var itemsChosen = 0;
 
+function writeToStorage(){
+  //need to write itemsChosen
+  //need to write numberOfTimesShown, usedInLastItemSet, and numberOfClicks for each object.
+  //do we want to keep the objects that were on the screen? not right now.
+}
+
 function displaySingleRandom(elementIndex,locationID){
   var index = Math.floor(Math.random() * (itemsObjectsWorking.length));
   if(document.getElementsByClassName('surveyImageBox')[elementIndex] && document.getElementsByClassName('surveyItemDesc')[elementIndex]){ //remove old elements if the exist
@@ -98,6 +104,7 @@ function surveyItemContainerClick(e){
   if(itemsChosen < 25){
     itemsChosen++;
     displayRandomItems();
+    writeToStorage();
   }
   else{
     var itemContainer = document.getElementsByClassName('surveyThreeItemsContainer')[0];
