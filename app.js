@@ -55,11 +55,18 @@ var itemsObjectsWorking;
 var itemsChosen = window.localStorage.itemsChosen || 0;
 
 function onLoadValues(){
+  var storedObjects = JSON.parse(window.localStorage.itemObjectSavedVallues);
+  console.log(storedObjects);
+  updateItemObjects();
   if(itemsChosen > 24){
     var surveyButtonLocation = document.getElementById('startSurvey');
     surveyButtonLocation.setAttribute('style', 'display:none');
     buildAPrettyChart();
   }
+}
+
+function updateItemObjects(){
+
 }
 
 function writeToStorage(){
