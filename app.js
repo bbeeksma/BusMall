@@ -10,7 +10,6 @@ function SurveyItem(name,price,description,imageFile) {
   this.usedInLastItemSet = false;
   this.pairedWith = [];
 
-  //this.buildRandomChartValues();
 }
 
 SurveyItem.prototype.buildSurveyItem = function(conatainerId){
@@ -33,11 +32,6 @@ SurveyItem.prototype.buildSurveyItem = function(conatainerId){
   newSurveyItemDesc.appendChild(newItemName);
   newSurveyItemDesc.appendChild(newItemDesc);
   this.setShownValues();
-};
-
-SurveyItem.prototype.buildRandomChartValues = function() {
-  this.numberOfClicks = Math.floor(Math.random() * 10);
-  this.numberOfTimesShown = Math.floor(Math.random() * 15 + 10);
 };
 
 SurveyItem.prototype.setShownValues = function () {
@@ -104,7 +98,6 @@ function surveyItemContainerClick(e){
   if(itemsChosen < 25){
     itemsChosen++;
     displayRandomItems();
-    console.log(itemObjects);
   }
   else{
     var itemContainer = document.getElementsByClassName('surveyThreeItemsContainer')[0];
