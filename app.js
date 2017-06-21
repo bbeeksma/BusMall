@@ -10,7 +10,6 @@ function SurveyItem(name,price,description,imageFile) {
   this.usedInLastItemSet = false;
   this.pairedWith = [];
 
-  //this.buildRandomChartValues();
 }
 
 SurveyItem.prototype.buildSurveyItem = function(conatainerId){
@@ -35,11 +34,6 @@ SurveyItem.prototype.buildSurveyItem = function(conatainerId){
   this.setShownValues();
 };
 
-SurveyItem.prototype.buildRandomChartValues = function() {
-  this.numberOfClicks = Math.floor(Math.random() * 10);
-  this.numberOfTimesShown = Math.floor(Math.random() * 15 + 10);
-};
-
 SurveyItem.prototype.setShownValues = function () {
   this.numberOfTimesShown++;
   this.usedInLastItemSet = true;
@@ -58,7 +52,68 @@ var itemObjects = [
 ];
 
 var itemsObjectsWorking;
-var itemsChosen = 0;
+var itemsChosen = window.localStorage.itemsChosen || 0;
+var itemsDisplayed = window.localStorage.itemsDisplayed || 0;
+
+function onLoadValues(){
+  updateItemObjects();
+  if(itemsChosen > 24){
+    var surveyButtonLocation = document.getElementById('startSurvey');
+    surveyButtonLocation.setAttribute('style', 'display:none');
+    buildAPrettyChart();
+  }
+  else if(itemsDisplayed > 0){
+    var surveyButtonLocation = document.getElementById('startSurvey');
+    surveyButtonLocation.setAttribute('style', 'display:none');
+    displayPreviousObjects();
+  }
+}
+
+function updateItemObjects(){
+  if(window.localStorage.itemObjectSavedVallues){
+    var storedObjects = JSON.parse(window.localStorage.itemObjectSavedVallues);
+    itemObjects.map(function(item){
+      item.numberOfTimesShown = storedObjects[item.itemName].numberOfTimesShown;
+      item.usedInLastItemSet = storedObjects[item.itemName].usedInLastItemSet;
+      item.numberOfClicks = storedObjects[item.itemName].numberOfClicks;
+    });
+  }
+}
+
+function displayPreviousObjects(){
+  var locations = ['surveyFirstItem','surveySecondItem','surveyThirdItem'];
+  var lastDisplayed = itemObjects.filter(function(item){
+    if(item.usedInLastItemSet === true){
+      return true;
+    }
+  });
+  console.log(lastDisplayed);
+  lastDisplayed.map(function(item,index){
+    item.buildSurveyItem(locations[index]);
+    item.numberOfTimesShown--; //decrement here because we've already shown once and don't need to count this as a second time
+  });
+}
+
+function writeToStorage(){
+  window.localStorage.itemsChosen = itemsChosen;
+  window.localStorage.itemsDisplayed = itemsDisplayed;
+  window.localStorage.itemObjectSavedVallues = prepForStorage();
+}
+
+function prepForStorage(){
+  var obj = {};
+  for(var i = 0; i < itemObjects.length; i++){
+    obj[itemObjects[i].itemName] = prepData(i);
+  }
+  return JSON.stringify(obj);
+}
+
+function prepData(index){
+  var numberOfTimesShown = itemObjects[index].numberOfTimesShown;
+  var usedInLastItemSet = itemObjects[index].usedInLastItemSet;
+  var numberOfClicks = itemObjects[index].numberOfClicks;
+  return {numberOfTimesShown: numberOfTimesShown, usedInLastItemSet: usedInLastItemSet, numberOfClicks: numberOfClicks};
+}
 
 function displaySingleRandom(elementIndex,locationID){
   var index = Math.floor(Math.random() * (itemsObjectsWorking.length));
@@ -93,6 +148,7 @@ function displayRandomItems(){
   displaySingleRandom(0,'surveyFirstItem');
   displaySingleRandom(1, 'surveySecondItem');
   displaySingleRandom(2, 'surveyThirdItem');
+  itemsDisplayed++;
 }
 
 function surveyItemContainerClick(e){
@@ -101,12 +157,14 @@ function surveyItemContainerClick(e){
       item.numberOfClicks++;
     }
   });
-  if(itemsChosen < 25){
+  if(itemsChosen < 24){
     itemsChosen++;
     displayRandomItems();
-    console.log(itemObjects);
+    writeToStorage();
   }
   else{
+    itemsChosen++;
+    writeToStorage();
     var itemContainer = document.getElementsByClassName('surveyThreeItemsContainer')[0];
     itemContainer.setAttribute('style','display:none');
     buildAPrettyChart();
@@ -117,6 +175,7 @@ function surveyStartButtonClick(){
   var surveyButtonLocation = document.getElementById('startSurvey');
   surveyButtonLocation.setAttribute('style', 'display:none');
   displayRandomItems();
+  writeToStorage();
 }
 
 function buildAPrettyChart(){
@@ -171,6 +230,7 @@ function buildAPrettyChart(){
   });
 }
 
+window.addEventListener('load',onLoadValues);
 document.getElementById('surveyButton').addEventListener('click',surveyStartButtonClick);
 document.getElementsByClassName('surveyItemContainer')[0].addEventListener('click', function(event){
   surveyItemContainerClick(event);

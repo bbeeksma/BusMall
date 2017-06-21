@@ -12,6 +12,7 @@
 - As a user I want the way I interact with the site to be intuitive.  I.E. If the site instructs me to click on an image, I don't want to have to find a radio button to click on.
 - As a user I want the site to give me simple and easy to follow instructions that let me know what to expect.s
 - As a user I want some indication that I am about to select an image. (soemthing on :hover probably)
+- As a user I want to be able to leave my survey and have my selections remembered so I can come back to it at a later time.
 
 ### Developer
 - As a developer I want my code to be DRY, or at least DRYish for easy readabilty and less typing.
