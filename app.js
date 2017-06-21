@@ -61,6 +61,11 @@ function onLoadValues(){
     surveyButtonLocation.setAttribute('style', 'display:none');
     buildAPrettyChart();
   }
+  else if(itemsChosen > 0){
+    var surveyButtonLocation = document.getElementById('startSurvey');
+    surveyButtonLocation.setAttribute('style', 'display:none');
+    displayPreviousObjects();
+  }
 }
 
 function updateItemObjects(){
@@ -73,6 +78,10 @@ function updateItemObjects(){
     });
     console.log(itemObjects);
   }
+}
+
+function displayPreviousObjects(){
+
 }
 
 function writeToStorage(){
