@@ -66,7 +66,12 @@ function onLoadValues(){
 function updateItemObjects(){
   if(window.localStorage.itemObjectSavedVallues){
     var storedObjects = JSON.parse(window.localStorage.itemObjectSavedVallues);
-    console.log(storedObjects);
+    itemObjects.map(function(item){
+      item.numberOfTimesShown = storedObjects[item.itemName].numberOfTimesShown;
+      item.usedInLastItemSet = storedObjects[item.itemName].usedInLastItemSet;
+      item.numberOfClicks = storedObjects[item.itemName].numberOfClicks;
+    });
+    console.log(itemObjects);
   }
 }
 
