@@ -52,7 +52,15 @@ var itemObjects = [
 ];
 
 var itemsObjectsWorking;
-var itemsChosen = 0;
+var itemsChosen = window.localStorage.itemsChosen || 0;
+
+function onLoadValues(){
+  if(itemsChosen > 24){
+    var surveyButtonLocation = document.getElementById('startSurvey');
+    surveyButtonLocation.setAttribute('style', 'display:none');
+    buildAPrettyChart();
+  }
+}
 
 function writeToStorage(){
   window.localStorage.itemsChosen = itemsChosen;
@@ -191,6 +199,7 @@ function buildAPrettyChart(){
   });
 }
 
+window.addEventListener('load',onLoadValues);
 document.getElementById('surveyButton').addEventListener('click',surveyStartButtonClick);
 document.getElementsByClassName('surveyItemContainer')[0].addEventListener('click', function(event){
   surveyItemContainerClick(event);
