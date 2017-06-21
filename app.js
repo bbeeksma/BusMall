@@ -57,15 +57,25 @@ var itemsChosen = 0;
 function writeToStorage(){
   window.localStorage.itemsChosen = itemsChosen;
   console.log(window.localStorage);
-  window.localStorage.itemObjects = prepForStorage();
+  for(var i = 0; i < itemObjects.length; i++){
+    window.localStorage.numberOfTimesShown = prepForStorage(i, 'numberOfTimesShown');
+    window.localStorage.usedInLastItemSet = prepForStorage(i, 'usedInLastItemSet');
+    window.localStorage.numberOfClicks = prepForStorage(i ,'numberOfClicks');
+  }
   console.log(window.localStorage);
   //need to write numberOfTimesShown, usedInLastItemSet, and numberOfClicks for each object.
   //do we want to keep the objects that were on the screen? not right now.
 }
 
-function prepForStorage(){
-  return JSON.stringify(itemObjects);
+function prepForStorage(index, key){
+  var itemName = itemObjects[index].itemName;
+  console.log('name = ' + name);
+  var value = itemObjects[index][key];
+  var obj = {name: itemName, value: value};
+  console.log('obj = ' + obj);
+  return JSON.stringify(obj);
 }
+
 function displaySingleRandom(elementIndex,locationID){
   var index = Math.floor(Math.random() * (itemsObjectsWorking.length));
   if(document.getElementsByClassName('surveyImageBox')[elementIndex] && document.getElementsByClassName('surveyItemDesc')[elementIndex]){ //remove old elements if the exist
