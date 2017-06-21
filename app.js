@@ -53,6 +53,7 @@ var itemObjects = [
 
 var itemsObjectsWorking;
 var itemsChosen = window.localStorage.itemsChosen || 0;
+var itemsDisplayed = window.localStorage.itemsDisplayed || 0;
 
 function onLoadValues(){
   updateItemObjects();
@@ -61,7 +62,7 @@ function onLoadValues(){
     surveyButtonLocation.setAttribute('style', 'display:none');
     buildAPrettyChart();
   }
-  else if(itemsChosen > 0){
+  else if(itemsDisplayed > 0){
     var surveyButtonLocation = document.getElementById('startSurvey');
     surveyButtonLocation.setAttribute('style', 'display:none');
     displayPreviousObjects();
@@ -95,6 +96,7 @@ function displayPreviousObjects(){
 
 function writeToStorage(){
   window.localStorage.itemsChosen = itemsChosen;
+  window.localStorage.itemsDisplayed = itemsDisplayed;
   window.localStorage.itemObjectSavedVallues = prepForStorage();
 }
 
@@ -146,6 +148,7 @@ function displayRandomItems(){
   displaySingleRandom(0,'surveyFirstItem');
   displaySingleRandom(1, 'surveySecondItem');
   displaySingleRandom(2, 'surveyThirdItem');
+  itemsDisplayed++;
 }
 
 function surveyItemContainerClick(e){
@@ -172,6 +175,7 @@ function surveyStartButtonClick(){
   var surveyButtonLocation = document.getElementById('startSurvey');
   surveyButtonLocation.setAttribute('style', 'display:none');
   displayRandomItems();
+  writeToStorage();
 }
 
 function buildAPrettyChart(){
