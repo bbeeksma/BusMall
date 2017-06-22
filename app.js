@@ -19,8 +19,9 @@ SurveyItem.prototype.buildSurveyItem = function(conatainerId){
   var newSurveyImageBox = document.createElement('div');
   var newSurveyItemDesc = document.createElement('div');
   var newImage = document.createElement('img');
-  var newItemName = document.createElement('h4');
+  var newItemName = document.createElement('h3');
   var newItemDesc = document.createElement('p');
+  var newItemPrice = document.createElement('h4');
   container.setAttribute('style', 'display: block');
   newSurveyImageBox.setAttribute('class','surveyImageBox');
   newSurveyItemDesc.setAttribute('class','surveyItemDesc');
@@ -29,11 +30,13 @@ SurveyItem.prototype.buildSurveyItem = function(conatainerId){
   newImage.setAttribute('name',this.itemName);
   newItemName.innerText = this.itemName;
   newItemDesc.innerText = this.itemDesc;
+  newItemPrice.innerText = this.itemPrice;
   container.appendChild(newSurveyImageBox);
   container.appendChild(newSurveyItemDesc);
   newSurveyImageBox.appendChild(newImage);
   newSurveyItemDesc.appendChild(newItemName);
   newSurveyItemDesc.appendChild(newItemDesc);
+  newSurveyItemDesc.appendChild(newItemPrice); 
   this.setShownValues();
 };
 
