@@ -5,9 +5,15 @@ Dark Green #1f9562
 Lilac #fbd7fb
 Dark Lilac #ad65c8
 */
+/* Fonts
+font-family: 'Aladin', cursive;
+font-family: 'Roboto', sans-serif;
+font-family: Georgia, serif;
+*/
 
 body{
   background-color: #fbd7fb;
+  font-family: Georgia, serif;
 }
 .widthContainer{
   min-width: 800px;
@@ -27,13 +33,13 @@ header h1{
   width: 30%;
   padding: 30px;
   float: left;
-  color: #1f9562
+  color: #1f9562;
+  font-family: 'Aladin', cursive;
 }
 header{
   clear: both;
   overflow: auto;
   box-sizing: border-box;
-  padding: 20px;
   background-color: white;
   min-height: 90px;
   margin: 1% 0;
@@ -41,7 +47,7 @@ header{
 }
 .logoImg{
   float:left;
-  max-width: 200px;
+  max-width: 100px;
 }
 /* Results aside*/
 .results{
@@ -53,6 +59,7 @@ header{
   margin: 1% 1% 2% 0;
   box-sizing: border-box;
   box-shadow: 10px 10px 5px 0px rgba(173,101,200,1);
+  font-family: 'Roboto', sans-serif;
 }
 .results ul{
   list-style: none;
