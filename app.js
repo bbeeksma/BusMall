@@ -19,6 +19,7 @@ SurveyItem.prototype.buildSurveyItem = function(conatainerId){
   var newImage = document.createElement('img');
   var newItemName = document.createElement('h4');
   var newItemDesc = document.createElement('p');
+  container.setAttribute('style', 'display: block');
   newSurveyImageBox.setAttribute('class','surveyImageBox');
   newSurveyItemDesc.setAttribute('class','surveyItemDesc');
   newImage.setAttribute('src',this.itemImageFile);

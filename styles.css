@@ -82,12 +82,20 @@ header{
   width: 72%;
   overflow: auto;
 }
+#surveyFirstItem, #surveySecondItem, #surveyThirdItem{
+  display:none;
+}
 .surveyItemContainer{
   float: left;
   width: 33.3333333%;
   padding: 10px;
-  border: 2px solid #1f9562;
+  border-width: 0 2px 0 0;
+  border-style: solid;
+  border-color: #1f9562;
   box-sizing: border-box;
+  height: 400px;
+  overflow: auto;
+  margin: 20px 0
 }
 .surveyImageBox img{
   width: 100%;
@@ -106,3 +114,20 @@ footer{
   min-height: 90px;
   box-sizing: border-box;
 }
+.lightHR{
+  width: 45%;
+  float: left;
+  margin: 15px auto 0 auto;
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+.lightHR:last-child{
+  float:right;
+}
+.fuBox{
+  clear: both;
+  overflow:auto;
+  height: 33px;
+  text-align: center;
