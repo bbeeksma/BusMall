@@ -1,5 +1,7 @@
 'use strict';
 
+Chart.defaults.global.defaultFontFamily = 'Roboto';
+
 function SurveyItem(name,price,description,imageFile) {
   this.itemName = name;
   this.itemPrice = price;
