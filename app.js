@@ -36,7 +36,7 @@ SurveyItem.prototype.buildSurveyItem = function(conatainerId){
   newSurveyImageBox.appendChild(newImage);
   newSurveyItemDesc.appendChild(newItemName);
   newSurveyItemDesc.appendChild(newItemDesc);
-  newSurveyItemDesc.appendChild(newItemPrice); 
+  newSurveyItemDesc.appendChild(newItemPrice);
   this.setShownValues();
 };
 

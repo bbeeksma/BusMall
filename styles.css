@@ -21,6 +21,35 @@ body{
   margin-left: auto;
   margin-right: auto;
 }
+.lightHR{
+  width: 45%;
+  float: left;
+  margin: 15px auto 0 auto;
+  height: 30px;
+  border-style: solid;
+  border-color: #65c89d;
+  border-width: 1px 0 0 0;
+  border-radius: 20px;
+  }
+.lightHR:before {
+  display: block;
+  content: "";
+  height: 30px;
+  margin-top: -31px;
+  border-style: solid;
+  border-color: #65c89d;
+  border-width: 0 0 1px 0;
+  border-radius: 20px;
+}
+.lightHR:last-child{
+  float:right;
+}
+.fuBox{
+  clear: both;
+  overflow:auto;
+  height: 33px;
+  text-align: center;
+}
 
 /* Header */
 .headerNav li{
@@ -139,31 +168,3 @@ footer{
   box-sizing: border-box;
   color: #98fb98;
 }
-.lightHR{
-  width: 45%;
-  float: left;
-  margin: 15px auto 0 auto;
-  height: 30px;
-  border-style: solid;
-  border-color: #65c89d;
-  border-width: 1px 0 0 0;
-  border-radius: 20px;
-  }
-.lightHR:before {
-  display: block;
-  content: "";
-  height: 30px;
-  margin-top: -31px;
-  border-style: solid;
-  border-color: #65c89d;
-  border-width: 0 0 1px 0;
-  border-radius: 20px;
-}
-.lightHR:last-child{
-  float:right;
-}
-.fuBox{
-  clear: both;
-  overflow:auto;
-  height: 33px;
-  text-align: center;
