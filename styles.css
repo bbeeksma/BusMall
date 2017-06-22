@@ -35,12 +35,13 @@ header h1{
   margin: 0 auto;
   color: #1f9562;
   font-family: 'Aladin', cursive;
-  text-align: center;
   font-size: 46px;
 }
 header{
   clear: both;
   overflow: auto;
+  text-align: center;
+  padding: 20px;
   box-sizing: border-box;
   background-color: white;
   min-height: 90px;
@@ -95,7 +96,7 @@ header{
   box-sizing: border-box;
   height: 400px;
   overflow: auto;
-  margin: 20px 0
+  margin: 20px 0;
 }
 .surveyImageBox img{
   width: 100%;
@@ -118,10 +119,21 @@ footer{
   width: 45%;
   float: left;
   margin: 15px auto 0 auto;
-  border: 0;
-  height: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  height: 30px;
+  border-style: solid;
+  border-color: #65c89d;
+  border-width: 1px 0 0 0;
+  border-radius: 20px;
+  }
+.lightHR:before {
+  display: block;
+  content: "";
+  height: 30px;
+  margin-top: -31px;
+  border-style: solid;
+  border-color: #65c89d;
+  border-width: 0 0 1px 0;
+  border-radius: 20px;
 }
 .lightHR:last-child{
   float:right;
