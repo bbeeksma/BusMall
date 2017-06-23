@@ -2,43 +2,77 @@
 <html>
   <head>
     <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Aladin|Roboto" rel="stylesheet">
     <link href = "styles.css" rel = "stylesheet" />
   </head>
   <body>
     <div class = "widthContainer">
       <header>
-        <h1>Title Goes Here</h1>
-        <nav class = "headerNav">
-          <ul>
-            <li>Home</li>
-            <li>Producs</li>
-            <li>About</li>
-            <li>Contact</li>
+        <img src = "images/african-violet-.png" alt = "A company logo, shaped like african violets" class = "logoImg">
+        <nav>
+          <ul class="headerNav">
+            <li>
+              <a href = # >Home</a>
+              <div class="menu-item" id="home">
+              </div>
+            </li>
+            <li>
+              <a href = # >Products</a>
+              <div class="menu-item" id="products">
+              </div>
+            </li>
+            <li>
+              <a href = # >About</a>
+              <div class="menu-item" id="about">
+              </div>
+            </li>
+            <li>
+              <a href = # >Contact</a>
+              <div class="menu-item" id="contact">
+              </div>
+            </li>
           </ul>
         </nav>
-      </header>
-      <aside class = "results">
-        <h3>die werte</h3>
-        <div class = "canvasBag">
-          <canvas id = "clickResults"></canvas>
+        <h1>Violet Roads Bus Mall</h1>
+        <div class "fuBox">
+          <hr class = 'lightHR'>
+          <img src = "images/violeta.png" width="33">
+          <hr class = 'lightHR'>
         </div>
-      </aside>
+      </header>
       <div class = "surveyMain">
+        <aside class = "results">
+          <h2>Your Results</h2>
+          <div class = "canvasBag">
+            <canvas id = "clickResults"></canvas>
+          </div>
+          <p id = "completedString"></p>
+        </aside>
         <div class = "surveyToStart" id = "startSurvey">
           <img src = "images\button_take-the-survey.png" id = "surveyButton"/>
         </div>
-        <div class = "surveyThreeItemsContainer">
-          <div class = "surveyItemContainer" id = "surveyFirstItem">
-          </div>
-          <div class = "surveyItemContainer" id = "surveySecondItem">
-          </div>
-          <div class = "surveyItemContainer" id = "surveyThirdItem">
+        <div class = "surveyThankYou">
+          <h5>Thank you for completing the survey!</h5>
+        </div>
+        <div class = "surveyInner">
+          <div class = "surveyThreeItemsContainer">
+            <div class = "surveyItemContainer" id = "surveyFirstItem">
+            </div>
+            <div class = "surveyItemContainer" id = "surveySecondItem">
+            </div>
+            <div class = "surveyItemContainer" id = "surveyThirdItem">
+            </div>
           </div>
         </div>
         <p class = "surveyInstrutions">
   Wedge kit organa mace antilles tusken raider windu mothma anakin. Padmé zabrak vader anakin skywalker. Solo fett antilles hutt dooku. Kit boba maul owen. Moff darth wampa hutt solo bespin c-3p0 calrissian moff. Grievous grievous r2-d2 dantooine mara kamino. Darth jawa ben yavin ewok antilles binks. Bespin amidala darth chewbacca sidious vader tusken raider lando darth. Darth palpatine antilles windu. Organa vader ben solo cade. Skywalker grievous hutt anakin mara calamari jade skywalker darth. Coruscant zabrak coruscant antilles yavin.</p>
       </div>
       <footer>
+        <div class "fuBox">
+          <hr class = 'lightHR'>
+          <img src = "images/violeta.png" width="33">
+          <hr class = 'lightHR'>
+        </div>
         <p>Aayla rahn lando r4-p17 myneyrsh max fey'lya.<br>Vong yarael duros watto wessell fel rodian.</p>
       </footer>
     </div>

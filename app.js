@@ -1,5 +1,7 @@
 'use strict';
 
+Chart.defaults.global.defaultFontFamily = 'Roboto';
+
 function SurveyItem(name,price,description,imageFile) {
   this.itemName = name;
   this.itemPrice = price;
@@ -17,8 +19,10 @@ SurveyItem.prototype.buildSurveyItem = function(conatainerId){
   var newSurveyImageBox = document.createElement('div');
   var newSurveyItemDesc = document.createElement('div');
   var newImage = document.createElement('img');
-  var newItemName = document.createElement('h4');
+  var newItemName = document.createElement('h3');
   var newItemDesc = document.createElement('p');
+  var newItemPrice = document.createElement('h4');
+  container.setAttribute('style', 'display: block');
   newSurveyImageBox.setAttribute('class','surveyImageBox');
   newSurveyItemDesc.setAttribute('class','surveyItemDesc');
   newImage.setAttribute('src',this.itemImageFile);
@@ -26,11 +30,13 @@ SurveyItem.prototype.buildSurveyItem = function(conatainerId){
   newImage.setAttribute('name',this.itemName);
   newItemName.innerText = this.itemName;
   newItemDesc.innerText = this.itemDesc;
+  newItemPrice.innerText = this.itemPrice;
   container.appendChild(newSurveyImageBox);
   container.appendChild(newSurveyItemDesc);
   newSurveyImageBox.appendChild(newImage);
   newSurveyItemDesc.appendChild(newItemName);
   newSurveyItemDesc.appendChild(newItemDesc);
+  newSurveyItemDesc.appendChild(newItemPrice);
   this.setShownValues();
 };
 
@@ -60,12 +66,17 @@ function onLoadValues(){
   if(itemsChosen > 24){
     var surveyButtonLocation = document.getElementById('startSurvey');
     surveyButtonLocation.setAttribute('style', 'display:none');
+    var thanksContainer = document.getElementsByClassName('surveyThankYou')[0];
+    thanksContainer.setAttribute('style', 'display: block');
+    var howManyQuestions = document.getElementById('completedString');
+    howManyQuestions.setAttribute('style','display:none');
     buildAPrettyChart();
   }
   else if(itemsDisplayed > 0){
     var surveyButtonLocation = document.getElementById('startSurvey');
     surveyButtonLocation.setAttribute('style', 'display:none');
     displayPreviousObjects();
+    displayHowManyQuestions();
   }
 }
 
@@ -160,6 +171,7 @@ function surveyItemContainerClick(e){
   if(itemsChosen < 24){
     itemsChosen++;
     displayRandomItems();
+    displayHowManyQuestions();
     writeToStorage();
   }
   else{
@@ -167,6 +179,10 @@ function surveyItemContainerClick(e){
     writeToStorage();
     var itemContainer = document.getElementsByClassName('surveyThreeItemsContainer')[0];
     itemContainer.setAttribute('style','display:none');
+    var thanksContainer = document.getElementsByClassName('surveyThankYou')[0];
+    thanksContainer.setAttribute('style', 'display: block');
+    var howManyQuestions = document.getElementById('completedString');
+    howManyQuestions.setAttribute('style','display:none');
     buildAPrettyChart();
   }
 }
@@ -176,6 +192,12 @@ function surveyStartButtonClick(){
   surveyButtonLocation.setAttribute('style', 'display:none');
   displayRandomItems();
   writeToStorage();
+}
+
+function displayHowManyQuestions(){
+  var howManyQuestions = document.getElementById('completedString');
+  howManyQuestions.setAttribute('style','display:block');
+  howManyQuestions.innerText = 'You have completed ' + itemsChosen + ' out of 25 questions.';
 }
 
 function buildAPrettyChart(){
