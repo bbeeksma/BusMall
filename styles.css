@@ -63,11 +63,13 @@ h1, h2, h3, h5{
   font-family: 'Aladin', cursive;
 }
 h3{
-  color: #ad65c8
+  color: #ad65c8;
 }
 h4{
   font-family: 'Roboto', sans-serif;
-  color: #1f9562
+  font-size: 14px;
+  color: #1f9562;
+  margin: 0;
 }
 header h1{
   width: 30%;
@@ -94,6 +96,7 @@ header{
 /* Results aside*/
 .results{
   float: left;
+  position: relative;
   padding: 20px;
   box-sizing: border-box;
   width: 26%;
@@ -110,6 +113,11 @@ header{
   width: 100%;
   min-height: 350px;
 }
+#completedString{
+  display: none;
+  position: absolute;
+  top: 60px;
+}
 /* survey content*/
 .surveyMain{
   box-sizing: border-box;
@@ -121,7 +129,7 @@ header{
 .surveyThankYou{
   display: none;
   padding: 100px;
-  height: 450px;
+  height: 500px;
   margin: 20px 0;
   text-align: center;
   box-sizing: border-box;
@@ -173,7 +181,15 @@ header{
   width: 100%;
 }
 .surveyToStart{
+  padding: 100px;
+  height: 450px;
+  margin: 20px 0;
   text-align: center;
+  box-sizing: border-box;
+}
+.surveyItemContainer p{
+  font-size: 14px;
+  color: gray;
 }
 /* footer */
 footer{

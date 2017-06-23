@@ -68,12 +68,15 @@ function onLoadValues(){
     surveyButtonLocation.setAttribute('style', 'display:none');
     var thanksContainer = document.getElementsByClassName('surveyThankYou')[0];
     thanksContainer.setAttribute('style', 'display: block');
+    var howManyQuestions = document.getElementById('completedString');
+    howManyQuestions.setAttribute('style','display:none');
     buildAPrettyChart();
   }
   else if(itemsDisplayed > 0){
     var surveyButtonLocation = document.getElementById('startSurvey');
     surveyButtonLocation.setAttribute('style', 'display:none');
     displayPreviousObjects();
+    displayHowManyQuestions();
   }
 }
 
@@ -168,6 +171,7 @@ function surveyItemContainerClick(e){
   if(itemsChosen < 24){
     itemsChosen++;
     displayRandomItems();
+    displayHowManyQuestions();
     writeToStorage();
   }
   else{
@@ -177,6 +181,8 @@ function surveyItemContainerClick(e){
     itemContainer.setAttribute('style','display:none');
     var thanksContainer = document.getElementsByClassName('surveyThankYou')[0];
     thanksContainer.setAttribute('style', 'display: block');
+    var howManyQuestions = document.getElementById('completedString');
+    howManyQuestions.setAttribute('style','display:none');
     buildAPrettyChart();
   }
 }
@@ -186,6 +192,12 @@ function surveyStartButtonClick(){
   surveyButtonLocation.setAttribute('style', 'display:none');
   displayRandomItems();
   writeToStorage();
+}
+
+function displayHowManyQuestions(){
+  var howManyQuestions = document.getElementById('completedString');
+  howManyQuestions.setAttribute('style','display:block');
+  howManyQuestions.innerText = 'You have completed ' + itemsChosen + ' out of 25 questions.';
 }
 
 function buildAPrettyChart(){
