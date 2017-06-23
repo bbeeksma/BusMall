@@ -51,14 +51,6 @@ body{
   height: 33px;
   text-align: center;
 }
-
-/* Header */
-.headerNav li{
-  display: inline-block;
-}
-.headerNav{
-  float: right;
-}
 h1, h2, h3, h5{
   font-family: 'Aladin', cursive;
 }
@@ -71,6 +63,80 @@ h4{
   color: #1f9562;
   margin: 0;
 }
+/* Header */
+nav {
+	width: 330px;
+	height: 50px;
+  float: right;
+	text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+.headerNav ul{
+    padding: 0;
+    margin: 0;
+}
+.headerNav li {
+	display: inline-block;
+	text-align: center;
+	margin: 30px 5px;
+	position: relative;
+  transition: all 0.3s ease;
+}
+.headerNav li:hover {
+	margin: 15px 10px;
+}
+.headerNav li:active {
+	margin: 15px 17px;
+}
+.headerNav li a  {
+	width: 50px;
+	height: 50px;
+	z-index: 10;
+	position: absolute;
+	top: 16px;
+	font-weight: bold;
+	display: block;
+	text-decoration: none;
+	font-size: 14px;
+	color: #1f9562;
+	text-shadow: 0px 1px 1px rgba(0,0,0,0.4), 0px 4px 6px rgba(0,0,0,0.1), 0px 9px 11px rgba(0,0,0,0.1);
+	transition: all 0.1s linear;
+}
+.headerNav li:active a {
+	font-size: 26px;
+	top: 30px;
+	text-shadow: none;
+}
+.headerNav li div.menu-item {
+	width: 50px;
+	height: 50px;
+	display: block;
+	transition: all ease 0.2s;
+	border-top-left-radius: 50px;
+	border-bottom-right-radius: 50px;
+	transform: rotate(45deg);
+}
+.headerNav li:hover div.menu-item{
+	border-top-left-radius: 40px;
+	border-bottom-right-radius: 40px;
+	transform: rotate(225deg);
+}
+.headerNav li:active div.menu-item{
+	border-top-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+}
+#home{
+  background: #ad65c8;
+}
+#products{
+  background: #fbd7fb;
+}
+#about{
+  background: #ad65c8;
+}
+#contact{
+  background: #fbd7fb;
+}
 header h1{
   width: 30%;
   padding: 30px;
@@ -82,6 +148,7 @@ header{
   clear: both;
   overflow: auto;
   text-align: center;
+  position: relative;
   width: 100%;
   padding: 20px 20px 0 20px;
   box-sizing: border-box;
