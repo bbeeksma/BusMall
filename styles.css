@@ -120,11 +120,14 @@ header{
 }
 .surveyThankYou{
   display: none;
+  padding: 100px;
   height: 450px;
+  margin: 20px 0;
   text-align: center;
+  box-sizing: border-box;
 }
 .surveyThankYou h5{
-  margin: auto;
+  margin: 0;
   font-size: 56px;
   color: #65c89d;
   text-shadow: 4px 4px 5px rgba(31, 149, 98, 1);

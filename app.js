@@ -66,6 +66,8 @@ function onLoadValues(){
   if(itemsChosen > 24){
     var surveyButtonLocation = document.getElementById('startSurvey');
     surveyButtonLocation.setAttribute('style', 'display:none');
+    var thanksContainer = document.getElementsByClassName('surveyThankYou')[0];
+    thanksContainer.setAttribute('style', 'display: block');
     buildAPrettyChart();
   }
   else if(itemsDisplayed > 0){
@@ -173,6 +175,8 @@ function surveyItemContainerClick(e){
     writeToStorage();
     var itemContainer = document.getElementsByClassName('surveyThreeItemsContainer')[0];
     itemContainer.setAttribute('style','display:none');
+    var thanksContainer = document.getElementsByClassName('surveyThankYou')[0];
+    thanksContainer.setAttribute('style', 'display: block');
     buildAPrettyChart();
   }
 }
